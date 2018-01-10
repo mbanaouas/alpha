@@ -10,7 +10,26 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
+import configparser
 import os
+
+
+def normpath(path, filename):
+    result = os.path.join(path, filename)
+    result = os.path.normpath(result)
+    result = os.path.normcase(result)
+    return result
+
+
+script_full = __file__
+script_path = os.path.dirname(script_full)
+script_name = os.path.basename(script_full)
+script_nom = os.path.splitext(script_name)[0]
+conf_name = script_nom + '.properties'
+conf_full = normpath(script_path, conf_name)
+
+config = configparser.ConfigParser()
+config.read(conf_full)
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -25,7 +44,7 @@ SECRET_KEY = '0=x9t-a4i6b0y2s4$#l((who2anr_vf8rpq&t#wpyex1gz2@c&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['cerib33.pythonanywhere.com']
+ALLOWED_HOSTS = config.get('ALLOWED_HOSTS', 'hosts').split(',')
 
 
 # Application definition
@@ -77,16 +96,12 @@ WSGI_APPLICATION = 'alpha.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'cerib33$alpha',    # Nom de la base de donnees
-        'USER': 'cerib33',          # Utilisateur
-        'PASSWORD': 'alpha0jet',    # Mot de passe si necessaire
-        'HOST': 'cerib33.mysql.pythonanywhere-services.com',        # Utile si votre base de donnees est sur une autre machine
-        'PORT': '3306',
+        'NAME': config.get('database', 'database'),
+        'USER': config.get('database', 'user'),
+        'PASSWORD': config.get('database', 'password'),
+        'HOST': config.get('database', 'host'),
+        'PORT': config.get('database', 'port'),
     },
-    'default_sqlite3': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
 }
 
 
