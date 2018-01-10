@@ -25,7 +25,7 @@ SECRET_KEY = '0=x9t-a4i6b0y2s4$#l((who2anr_vf8rpq&t#wpyex1gz2@c&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['cerib33.pythonanywhere.com']
 
 
 # Application definition
@@ -77,10 +77,10 @@ WSGI_APPLICATION = 'alpha.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'alpha',             # Nom de la base de donnees
-        'USER': 'alpha',             # Utilisateur
-        'PASSWORD': 'alpha0jet',     # Mot de passe si necessaire
-        'HOST': 'localhost',         # Utile si votre base de donnees est sur une autre machine
+        'NAME': 'cerib33$alpha',    # Nom de la base de donnees
+        'USER': 'cerib33',          # Utilisateur
+        'PASSWORD': 'alpha0jet',    # Mot de passe si necessaire
+        'HOST': 'cerib33.mysql.pythonanywhere-services.com',        # Utile si votre base de donnees est sur une autre machine
         'PORT': '3306',
     },
     'default_sqlite3': {
