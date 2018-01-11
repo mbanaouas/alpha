@@ -34,7 +34,6 @@ config.read(conf_full)
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
@@ -45,7 +44,6 @@ SECRET_KEY = '0=x9t-a4i6b0y2s4$#l((who2anr_vf8rpq&t#wpyex1gz2@c&'
 DEBUG = True
 
 ALLOWED_HOSTS = config.get('ALLOWED_HOSTS', 'hosts').split(',')
-
 
 # Application definition
 
@@ -70,39 +68,35 @@ MIDDLEWARE = [
 ]
 
 if DEBUG:
-    INTERNAL_IPS = ('127.0.0.1', 'localhost',)
-    MIDDLEWARE += (
-       'debug_toolbar.middleware.DebugToolbarMiddleware',
-    )
+    # INTERNAL_IPS = ('127.0.0.1', 'localhost',)
+    # MIDDLEWARE += (
+    #    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    # )
 
-    INSTALLED_APPS += (
-        'django_extensions',
-        'django_werkzeug',
-        'debug_toolbar',
-    )
+    # INSTALLED_APPS += (
+    #     'django_extensions',
+    #     'django_werkzeug',
+    #     'debug_toolbar',
+    # )
 
     DEBUG_TOOLBAR_PANELS = [
-       'debug_toolbar.panels.versions.VersionsPanel',
-       'debug_toolbar.panels.timer.TimerPanel',
-       'debug_toolbar.panels.settings.SettingsPanel',
-       'debug_toolbar.panels.headers.HeadersPanel',
-       'debug_toolbar.panels.request.RequestPanel',
-       'debug_toolbar.panels.sql.SQLPanel',
-       'debug_toolbar.panels.staticfiles.StaticFilesPanel',
-       'debug_toolbar.panels.templates.TemplatesPanel',
-       'debug_toolbar.panels.cache.CachePanel',
-       'debug_toolbar.panels.signals.SignalsPanel',
-       'debug_toolbar.panels.logging.LoggingPanel',
-       'debug_toolbar.panels.redirects.RedirectsPanel',
+        'debug_toolbar.panels.versions.VersionsPanel',
+        'debug_toolbar.panels.timer.TimerPanel',
+        'debug_toolbar.panels.settings.SettingsPanel',
+        'debug_toolbar.panels.headers.HeadersPanel',
+        'debug_toolbar.panels.request.RequestPanel',
+        'debug_toolbar.panels.sql.SQLPanel',
+        'debug_toolbar.panels.staticfiles.StaticFilesPanel',
+        'debug_toolbar.panels.templates.TemplatesPanel',
+        'debug_toolbar.panels.cache.CachePanel',
+        'debug_toolbar.panels.signals.SignalsPanel',
+        'debug_toolbar.panels.logging.LoggingPanel',
+        'debug_toolbar.panels.redirects.RedirectsPanel',
     ]
 
     DEBUG_TOOLBAR_CONFIG = {
-       'INTERCEPT_REDIRECTS': False,
+        'INTERCEPT_REDIRECTS': False,
     }
-
-
-def custom_show_toolbar(request):
-    return False
 
 ROOT_URLCONF = 'alpha.urls'
 
@@ -124,7 +118,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'alpha.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
@@ -138,7 +131,6 @@ DATABASES = {
         'PORT': config.get('database', 'port'),
     },
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
@@ -158,11 +150,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'fr-FR'
 
 TIME_ZONE = 'UTC'
 
@@ -171,7 +162,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
