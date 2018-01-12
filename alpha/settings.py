@@ -17,7 +17,7 @@ import os
 def normpath(path, filename):
     result = os.path.join(path, filename)
     result = os.path.normpath(result)
-    result = os.path.normcase(result)
+    result = os.path.normcase(result).replace('\\', '/')
     return result
 
 
@@ -103,7 +103,7 @@ ROOT_URLCONF = 'alpha.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [normpath(BASE_DIR,item) for item in ('blog/templates/registration', 'blog/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -115,6 +115,8 @@ TEMPLATES = [
         },
     },
 ]
+
+print('TEMPLATES: ', TEMPLATES[0]['DIRS'])
 
 WSGI_APPLICATION = 'alpha.wsgi.application'
 
@@ -168,3 +170,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = config.get('static', 'STATIC_ROOT')
 STATICFILES_DIRS = config.get('static', 'STATICFILES_DIRS').split(',')
+
+LOGIN_REDIRECT_URL = '/'
