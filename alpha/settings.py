@@ -54,7 +54,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'blog'
+    'css'
 ]
 
 MIDDLEWARE = [
@@ -68,16 +68,16 @@ MIDDLEWARE = [
 ]
 
 if DEBUG:
-    # INTERNAL_IPS = ('127.0.0.1', 'localhost',)
-    # MIDDLEWARE += (
-    #    'debug_toolbar.middleware.DebugToolbarMiddleware',
-    # )
+    INTERNAL_IPS = ('127.0.0.1', 'localhost',)
+    MIDDLEWARE += (
+       'debug_toolbar.middleware.DebugToolbarMiddleware',
+    )
 
-    # INSTALLED_APPS += (
-    #     'django_extensions',
-    #     'django_werkzeug',
-    #     'debug_toolbar',
-    # )
+    INSTALLED_APPS += (
+        'django_extensions',
+        'django_werkzeug',
+        'debug_toolbar',
+    )
 
     DEBUG_TOOLBAR_PANELS = [
         'debug_toolbar.panels.versions.VersionsPanel',
